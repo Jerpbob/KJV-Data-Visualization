@@ -1,0 +1,12 @@
+services:
+  postgres:
+    image: postgres:16.2-alpine3.19
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=kjv
+    volumes:
+      - kjv-db:/var/lib/postgresql/data
+    ports:
+      - 5433:5432
+volumes:
+  kjv-db:
