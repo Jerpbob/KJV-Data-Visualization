@@ -21,11 +21,17 @@ TODO: Implement a dockerfile to create a python image
 But for now
 ### Install Python [here](https://www.python.org/downloads/)
 Then in your directory of choice, clone the repository
+
 ```git clone git@github.com:Jerpbob/KJV-Data-Visualization.git ```
+
 Then enter into the project root directory
+
 ```cd KJV-Data_Visualization```
+
 Then used docker compose to start up your postgres container
+
 ```docker compose up -d```
+
 You can then copy and paste the sql from bible_tables.sql and follow the comments to create the tables in your db
 
 For more complex operations, I used pandas and numpy from Python, so let's get that started too.
@@ -34,7 +40,11 @@ Create a virtual environment.
 ```python3 -m venv env```
 
 Then activate your virtual environment
+
 ```activate source env/bin/activate```
+
 Then install both pandas and numpy (when you install pandas numpy is installed as well) 
+
 ```pip install pandas```
+
 Then you can run ```python3 main.py``` to run the python script to see the dataframes and mess around with them.
