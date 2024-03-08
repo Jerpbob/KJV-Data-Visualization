@@ -29,7 +29,7 @@ git clone git@github.com:Jerpbob/KJV-Data-Visualization.git
 Then enter into the project root directory
 
 ```
-cd KJV-Data_Visualization
+cd KJV-Data-Visualization
 ```
 
 Then used docker compose to start up your postgres container
