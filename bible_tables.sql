@@ -1,10 +1,19 @@
--- Create a table w/ values that correspond to bible_data_set.csv
+-- Create a table w/ values that correspond to bible_data_set.csv 
 create table bible_main (
 	citation VARCHAR(20),
 	book VARCHAR(20),
 	chapter SMALLINT,
 	verse SMALLINT,
 	text VARCHAR(700)
+);
+
+-- Create another table w/ values that correspond to cleaned_bible_data.csv
+create table cleaned_bible_main (
+	citation VARCHAR(20),
+	book VARCHAR(20),
+	chapter smallint,
+	verse smallint,
+	text varchar(50)[]
 );
 -------------------------------------------------------------------------
 -- I used dbeaver and the process of copying the csv file into the table
@@ -44,3 +53,51 @@ create table bible_books as
 -- ** I had to manually update each row to add the book number **
 alter table bible_Books add primary key (book);
 alter table bible_books add book_num SMALLINT;
+
+-- Create an OBT (one big table) from cleaned_bible_main and bible_main tables
+create table bible as
+(
+select 
+	cbm.verse_id, 
+	cbm.citation, 
+	cbm.book, 
+	cbm.chapter, 
+	cbm.verse, 
+	bm.text as text_with_symbols, 
+	array_to_string(cbm.text, ' ') as text_without_symbols,
+	unnest(cbm.text) as case_sensitive_word,
+	lower(unnest(cbm.text)) non_case_sensitive_word
+from cleaned_bible_main cbm
+inner join bible_main bm on cbm.verse_id = bm.verseid
+);
+
+alter table bible add column word_id serial primary key;
+alter table bible 
+add constraint fk_book
+foreign key (book) references bible_books(book);
+
+-- a query to showcase the number of words in a chapter in the order it shows in 
+-- the Bible
+with grouped_bible as (
+	select 
+		verse_id, 
+		citation, 
+		book, 
+		chapter,
+		text_with_symbols, 
+		count(case_sensitive_word) as word_count
+	from bible
+	group by verse_id, citation, book, chapter, text_with_symbols
+)
+select bb.book_num, b.book, b.chapter, b.num_words
+from (
+	select 
+		book, 
+		chapter, 
+		sum(word_count) num_words
+	from grouped_bible
+	group by book, chapter
+	order by book, chapter
+	) b
+left join bible_books bb on bb.book = b.book
+order by book_num, chapter;
