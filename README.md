@@ -2,7 +2,7 @@
 ### Project Description
 >>>A visualization of some data analysis on the KJV (1611 King James Authorized Version) Bible. 
 
-## Technology Stack
+## Technology used
 
 | Technology | Description | 
 |------------|-------------|
@@ -64,3 +64,6 @@ Then you can run
 python3 main.py
 ``` 
 to run the python script to see the dataframes and mess around with them.
+
+## Schema from bible_tables.sql
+![schema table using dbeaver](<postgres - public - bible.png>)
