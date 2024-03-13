@@ -10,7 +10,7 @@
 | Docker     | Creates/deploys applications on virtualized containers |
 | Python     | High Level, Dynamic Language |
 | SQL        | Programming Language for processing and storing information in a relational database |
-| TODO: Tableau | Data visualization tool |
+| Tableau | Data visualization tool |
 
 ## Python Libraries 
 * Pandas: used for analyzing, cleaning, exploring, and manipulating data.
