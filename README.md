@@ -2,6 +2,9 @@
 ### Project Description
 >>>A visualization of some data analysis on the KJV (1611 King James Authorized Version) Bible. 
 
+![Tableau Visualization](image.png)
+
+[link](https://public.tableau.com/app/profile/jeru.paul.balares/viz/KJV_4_Chapters_Per_Day/Dashboard1)
 ## Technology used
 
 | Technology | Description | 
@@ -67,8 +70,3 @@ to run the python script to see the dataframes and mess around with them.
 
 ## Schema from bible_tables.sql
 ![schema table using dbeaver](<postgres - public - bible.png>)
-
-## Data Visualization/s
-![Tableau Visualization](image.png)
-
-[link](https://public.tableau.com/app/profile/jeru.paul.balares/viz/KJV_4_Chapters_Per_Day/Dashboard1)
